@@ -31,7 +31,7 @@ class ScrapeService:
         job = self.jobs[job_id]
         job.status = JobStatus.running
 
-        cache_key = hashlib.sha1(job.request.model_dump_json().encode("utf-8")).hexdigest()  # noqa: S324
+        cache_key = hashlib.sha256(job.request.model_dump_json().encode("utf-8")).hexdigest()
         cached = self.cache.get(cache_key)
         if cached is not None:
             job.results = cached
