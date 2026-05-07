@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 
@@ -13,11 +13,11 @@ class TTLCache:
             return None
 
         expires_at, payload = value
-        if datetime.utcnow() > expires_at:
+        if datetime.now(timezone.utc) > expires_at:
             self._store.pop(key, None)
             return None
 
         return payload
 
     def set(self, key: str, payload: Any) -> None:
-        self._store[key] = (datetime.utcnow() + timedelta(seconds=self.ttl_seconds), payload)
+        self._store[key] = (datetime.now(timezone.utc) + timedelta(seconds=self.ttl_seconds), payload)

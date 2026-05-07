@@ -89,7 +89,7 @@ Normalized rows include only selected fields plus `website`:
 ### Backend
 
 ```bash
-cd /home/runner/work/Web-Scraper/Web-Scraper/backend
+cd backend
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -100,7 +100,7 @@ uvicorn app.main:app --reload --port 8000
 ### Frontend
 
 ```bash
-cd /home/runner/work/Web-Scraper/Web-Scraper/frontend
+cd frontend
 npm install
 cp .env.example .env
 npm run dev
@@ -112,7 +112,6 @@ Backend: `http://localhost:8000`
 ## Docker
 
 ```bash
-cd /home/runner/work/Web-Scraper/Web-Scraper
 docker compose up --build
 ```
 
